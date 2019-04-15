@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Project = props => {
+const Home = () => {
     
     return(
         <div>
-            <h2>Project</h2>
+            <h2>Home</h2>
         </div>
     )
     
 }
 
-export default Project;
+export default Home;
