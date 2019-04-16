@@ -17,6 +17,7 @@ export const projectReducer = (state = initialState, action) => {
           gettingProjects: true
          };
     case actionTypes.FETCH_PROJECTS_SUCCESS:
+    console.log(action.payload)
       return { 
           ...state, 
           projects: action.payload, 

@@ -5,7 +5,7 @@ class NewProject extends React.Component {
     render(){
         return(
             <div>
-                <h1>NewProject</h1>
+                <h2>New Project</h2>
                 <form action="updateProject">
                     <input type="text"/>
                     <Button>Add Project</Button>

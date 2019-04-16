@@ -1,13 +1,14 @@
 import React from 'react';
+import { Button } from '../Styles'
 
 class NewValues extends React.Component {
     render(){
         return(
             <div>
-                <h1>New Values</h1>
+                <h2>New Values</h2>
                 <form action="updateValues">
                     <input type="text"/>
-                    <button>Submit Update</button>
+                    <Button>Submit Update</Button>
                 </form>
             </div>
         )

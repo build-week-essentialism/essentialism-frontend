@@ -3,9 +3,11 @@ import * as actionTypes from '../actions';
 const initialState = {
     loggingIn: false,
     error: "",
+    message: "",
+    user:[]
 }
-
-export const rootReducer = (state = initialState, action) => {
+export let id = initialState.user.id
+export const loginReducer = (state = initialState, action) => {
     switch (action.type) {
       case actionTypes.LOGIN_START:
         return {
@@ -15,10 +17,13 @@ export const rootReducer = (state = initialState, action) => {
         };
   
       case actionTypes.LOGIN_SUCCESS:
+      console.log(action.payload)
         return {
           ...state,
           error: "",
-          loggingIn: false
+          loggingIn: false,
+          message: action.payload.message,
+          user: action.payload.user
         };
   
       case actionTypes.LOGIN_FAILURE:

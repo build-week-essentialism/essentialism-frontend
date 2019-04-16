@@ -2,6 +2,8 @@ import * as actionTypes from '../actions';
 
 const initialState = {
   values: [],
+  createdValues: [],
+  defaultValues: [],
   gettingValues: false,
   updatingValue: false,
   creatingValue: false,
@@ -17,9 +19,12 @@ export const valueReducer = (state = initialState, action) => {
         gettingValues: true 
       };
     case actionTypes.FETCH_VALUES_SUCCESS:
+    console.log(action.payload)
       return { 
         ...state, 
-        values: action.payload, 
+        values: action.payload,
+        createdValues: action.payload,
+        defaultValues: action.payload,
         gettingValues: false 
       };
     case actionTypes.FETCH_VALUES_FAILURE:
