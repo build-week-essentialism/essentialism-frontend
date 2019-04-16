@@ -1,55 +1,80 @@
-import React, { Component } from 'react';
-import { Button, Form, FormGroup, Input } from '../Styles';
+import React from "react";
+import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
+import { login, fetchProjects } from "../actions";
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+class Login extends React.Component {
+  state = {
+    credentials: {
+      username: "",
+      password: ""
+    }
   };
 
-  handleLoginSubmit = e => {
-    const user = this.state.username;
-    localStorage.setItem('user', user);
-    window.location.reload();
+  
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
   };
 
+  login = e => {
+    e.preventDefault();
+    this.props
+      .login(this.state.credentials)
+      .then(() => {
+        this.props.history.push("/home");
+      })
+      .then(() => {
+        this.props.fetchProjects();
+      });
+  };
   render() {
     return (
-      <Form className="login-form">
-        <h3>Welcome to the Essentialism App</h3>
-        <div>Please Login</div>
-        <FormGroup>
-          <Input
+      <div>
+        <form onSubmit={this.login}>
+          <input
             type="text"
-            placeholder="User Name"
             name="username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
+            autoComplete="username"
+            placeholder="username"
           />
-        </FormGroup>
-        <FormGroup>
-          <Input
+          <input
             type="password"
-            placeholder="Password"
             name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
+            autoComplete="current-password"
+            placeholder="password"
           />
-          <br />
-          <Button color="success" size="large" onClick={this.handleLoginSubmit}>
-            Log In
-          </Button>
-        </FormGroup>
-      </Form>
+          <button>
+            {" "}
+            {this.props.loggingIn ? (
+              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+            ) : (
+              "Log in"
+            )}
+          </button>
+        </form>
+      </div>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    loggingIn: state.loggingIn,
+    error: state.error,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { login, fetchProjects }
+)(Login);

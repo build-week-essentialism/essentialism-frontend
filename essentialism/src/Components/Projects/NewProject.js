@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../Styles'
 
 class NewProject extends React.Component {
     render(){
@@ -7,7 +8,7 @@ class NewProject extends React.Component {
                 <h1>NewProject</h1>
                 <form action="updateProject">
                     <input type="text"/>
-                    <button>Add Project</button>
+                    <Button>Add Project</Button>
                 </form>
             </div>
         )

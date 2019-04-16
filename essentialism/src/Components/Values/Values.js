@@ -1,17 +1,27 @@
 import React from 'react';
 import Value from './Value';
+import NewValues from './NewValues';
+import { connect } from "react-redux";
 
 class Values extends React.Component {
     render(){
         return(
             <div>
                 <h1>My Values</h1>
-                <Value/>
-                <Value/>
-                <Value/>
+                <NewValues/>
+                {this.props.values.map((value,id) =>{
+                   return <Value value={value} id={id}/>
+                })}
             </div>
         )
     }
 }
-
-export default Values;
+const mapStatetoProps = state => {
+    return {
+      values: state.values
+    };
+  };
+  export default connect(
+    mapStatetoProps,
+    {}
+  )(Values)
