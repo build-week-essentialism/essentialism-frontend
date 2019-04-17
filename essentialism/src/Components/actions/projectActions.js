@@ -1,6 +1,6 @@
 import axiosAuth from "../Auth/axiosAuth";
 import {URL} from './loginActions';
-import {id} from '../reducers/loginReducers'
+import {id} from '../reducers/loginReducer'
 export const FETCH_PROJECTS_START = "FETCH_PROJECTS_START";
 export const FETCH_PROJECTS_SUCCESS = "FETCH_PROJECTS_SUCCESS";
 export const FETCH_PROJECTS_FAILURE = "FETCH_PROJECTS_FAILURE";

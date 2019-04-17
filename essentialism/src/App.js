@@ -13,6 +13,20 @@ import Projects from './Components/Projects/Projects';
 import { connect } from "react-redux";
 
 class App extends Component {
+  state = {
+    projects: [],
+    values: [],
+    user: []
+  }
+
+  handleChange = e => {
+    this.setState({
+      projects: { ...this.state.projects},
+      values: { ...this.state.values},
+      user: { ...this.state.user},
+    });
+  };
+
   render() {
     return (
       <Router>

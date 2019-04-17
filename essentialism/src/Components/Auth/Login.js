@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
-import { login, fetchProjects } from "../actions";
+import { login, fetchProjects, fetchDefaultValues, fetchUserValues } from "../actions";
 
 class Login extends React.Component {
   state = {
@@ -31,6 +31,8 @@ class Login extends React.Component {
       })
       .then(() => {
         this.props.fetchProjects();
+        this.props.fetchDefaultValues();
+        this.props.fetchUserValues();
       });
   };
   render() {
@@ -76,5 +78,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { login, fetchProjects }
+  { login, fetchProjects, fetchDefaultValues, fetchUserValues }
 )(Login);

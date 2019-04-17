@@ -2,8 +2,6 @@ import * as actionTypes from '../actions';
 
 const initialState = {
   values: [],
-  createdValues: [],
-  defaultValues: [],
   gettingValues: false,
   updatingValue: false,
   creatingValue: false,
@@ -11,23 +9,21 @@ const initialState = {
   error: null
 };
 
-export const valueReducer = (state = initialState, action) => {
+export const userValueReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCH_VALUES_START:
+    case actionTypes.USER_VALUES_START:
       return { 
         ...state, 
         gettingValues: true 
       };
-    case actionTypes.FETCH_VALUES_SUCCESS:
+    case actionTypes.USER_VALUES_SUCCESS:
     console.log(action.payload)
       return { 
         ...state, 
         values: action.payload,
-        createdValues: action.payload,
-        defaultValues: action.payload,
         gettingValues: false 
       };
-    case actionTypes.FETCH_VALUES_FAILURE:
+    case actionTypes.USER_VALUES_FAILURE:
       return {
         ...state,
         gettingValues: false,
