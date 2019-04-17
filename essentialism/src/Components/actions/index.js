@@ -25,3 +25,10 @@ export {
     USER_VALUES_FAILURE,
     fetchUserValues
 } from './userValueActions';
+
+export {
+    ADD_VALUE_START,
+    ADD_VALUE_SUCCESS,
+    ADD_VALUE_FAILURE,
+    addValue
+} from './addValueAction';

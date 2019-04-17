@@ -4,9 +4,12 @@ const initialState = {
     loggingIn: false,
     error: "",
     message: "",
-    user:[]
+    user:{
+      id:''
+    }
 }
-export let id = initialState.user.id
+export let user_id = initialState.user.id;
+console.log(user_id)
 export const loginReducer = (state = initialState, action) => {
     switch (action.type) {
       case actionTypes.LOGIN_START:

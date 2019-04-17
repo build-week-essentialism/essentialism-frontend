@@ -23,7 +23,7 @@ class Values extends React.Component {
 }
 const mapStatetoProps = state => {
     return {
-      values: state.userValueReducer.values,
+      values: state.userValueReducer.uservalues,
       defaultValues: state.defaultValueReducer.defaultValues
     };
   };
