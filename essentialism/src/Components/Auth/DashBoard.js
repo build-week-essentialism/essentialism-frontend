@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { login, register, fetchProjects, fetchDefaultValues, fetchUserValues } from "../actions";
 
-class Home extends React.Component {
+class DashBoard extends React.Component {
     state = {
         projects: []
       };
@@ -10,7 +10,7 @@ class Home extends React.Component {
     render() {
     return(
         <div>
-            <h1>Home</h1>
+            <h1>DashBoard</h1>
             <p>{this.props.message}</p>
             <p>{this.props.user.username}</p>
         </div>
@@ -26,4 +26,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { login, register, fetchProjects, fetchDefaultValues, fetchUserValues }
-)(Home);
+)(DashBoard);
