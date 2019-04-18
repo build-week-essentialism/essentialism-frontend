@@ -59,8 +59,8 @@ class App extends Component {
             <Route exact path="/values" component={Values}/>
             <Route exact path="/projects" component={Projects}/>
             <Route exact path="/settings" component={Settings} />
-            <Route exact path="/new-user/edit-values" component={EditValues}/>
-            <Route exact path="/new-user/edit-projectss" component={EditProjects}/>
+            <Route exact path="/settings/edit-values" component={EditValues}/>
+            <Route exact path="/settings/edit-projects" component={EditProjects}/>
           </div>
 
         </div>
