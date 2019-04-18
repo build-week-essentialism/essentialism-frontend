@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export class Header extends Component {
     state = {
-      userId: null
+      user_id: null
     };
   
     componentDidMount = () => {
@@ -11,19 +11,19 @@ export class Header extends Component {
       };
     
     getUserID = () => {
-    const userID = localStorage.getItem("userID");
-    this.setState({ ...this.state, userId: userID });
-    return userID;
+    const user_id = localStorage.getItem("user_id");
+    this.setState({ ...this.state, user_id: user_id });
+    return user_id;
     };
     
     Logout = () => {
-    localStorage.removeItem("userID");
-    localStorage.removeItem("authorization");
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("token");
     };
 
     render(){
-        const userID = localStorage.getItem("userID");
-        if (!userID) {
+        const user_id = localStorage.getItem("user_id");
+        if (!user_id) {
             return (
                 <div>
                   <Link to={`/`}>
@@ -37,7 +37,7 @@ export class Header extends Component {
                   </Link>
                 </div>
             );
-          } else if (userID) {
+          } else if (user_id) {
             return (
                 <div>
                   <Link to={`/`}>
@@ -45,9 +45,6 @@ export class Header extends Component {
                   </Link>
                   <Link to="/dashboard">
                     <p>Dashboard</p>
-                  </Link>
-                  <Link to="/settings">
-                    <p>Settings</p>
                   </Link>
                   <Link to={`/login`}>
                     <p onClick={this.Logout}>Logout</p>
@@ -57,7 +54,5 @@ export class Header extends Component {
           }
         }
     }
-
-
 
 export default Header;
