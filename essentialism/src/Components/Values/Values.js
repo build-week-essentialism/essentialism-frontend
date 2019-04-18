@@ -2,7 +2,7 @@ import React from 'react';
 import Value from './Value';
 import NewValues from './NewValues';
 import { connect } from "react-redux";
-import { fetchDefaultValues, fetchUserValues } from '../actions/index.js';
+import { fetchDefaultValues, fetchUserValues } from '../../actions/index.js';
 
 class Values extends React.Component {
   constructor(props){
@@ -34,12 +34,11 @@ componentDidUpdate(prevProps){
         if (localStorage.getItem("token") && localStorage.getItem("user_id")){
         return(
             <div>
-                <h1>My Values</h1>
-                <NewValues/>
+                {/* <NewValues/>
                 <h2>Default Values</h2>
                 {this.state.defaultValues.map((value,id) =>{
                    return <Value value={value} key={id}/>
-                })}
+                })} */}
                 <h2>My Values</h2>
                 {this.state.uservalues.map((value,id) =>{
                    return <Value value={value} key={id}/>

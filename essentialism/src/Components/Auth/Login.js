@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import { Button } from "../Styles"
 
-import { login, fetchProjects, fetchDefaultValues, fetchUserValues } from "../actions";
+import { login, fetchProjects, fetchDefaultValues, fetchUserValues } from "../../actions";
 
 class Login extends React.Component {
   

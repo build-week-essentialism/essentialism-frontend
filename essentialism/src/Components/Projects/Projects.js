@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import Project from './Project';
-import { fetchProjects } from '../actions/index.js';
+import { fetchProjects } from '../../actions';
 
 class Projects extends React.Component {
   constructor(props){

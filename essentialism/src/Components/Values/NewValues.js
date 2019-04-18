@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../Styles';
 import Loader from 'react-loader-spinner';
 import { connect } from "react-redux";
-import { addValue } from "../actions";
+import { addValue } from "../../actions";
 
 class NewValues extends React.Component {
     render(){

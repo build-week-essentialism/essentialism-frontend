@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
-import Header from "./Components/Header/Header";
 import PrivateRoute from "./Components/Auth/PrivateRoute";
 import DashBoard from "./Components/Auth/DashBoard";
+
+import Header from "./Components/Header/Header";
+
 import NewValues from './Components/Values/NewValues';
 import Values from './Components/Values/Values';
+
 import NewProject from './Components/Projects/NewProject';
 import Projects from './Components/Projects/Projects';
 

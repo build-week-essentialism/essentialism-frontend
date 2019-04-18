@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {Button} from '../Styles';
 import {connect} from 'react-redux';
-import {} from "../actions";
+import {} from "../../actions";
 
 class DashBoard extends React.Component {
     state = {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { register } from "../actions";
+import { register } from "../../actions";
 import {Button} from '../Styles/';
 import Loader from 'react-loader-spinner';
 import { connect } from "react-redux";

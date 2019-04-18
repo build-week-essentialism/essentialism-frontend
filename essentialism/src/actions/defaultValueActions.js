@@ -1,4 +1,4 @@
-import axiosAuth from "../Auth/axiosAuth";
+import axiosAuth from "../Components/Auth/axiosAuth";
 import {URL} from './loginActions';
 
 export const DEFAULT_VALUES_START = "DEFAULT_VALUES_START";

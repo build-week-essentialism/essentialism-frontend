@@ -1,4 +1,4 @@
-import axiosAuth from "../Auth/axiosAuth";
+import axiosAuth from "../Components/Auth/axiosAuth";
 import {URL} from './loginActions';
 
 export const FETCH_PROJECTS_START = "FETCH_PROJECTS_START";

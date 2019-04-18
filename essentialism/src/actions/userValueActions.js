@@ -1,4 +1,4 @@
-import axiosAuth from "../Auth/axiosAuth";
+import axiosAuth from "../Components/Auth/axiosAuth";
 import { URL } from './loginActions';
 
 export const USER_VALUES_START = "USER_VALUES_START";

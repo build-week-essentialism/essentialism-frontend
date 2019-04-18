@@ -15,7 +15,7 @@ import {
 	projectReducer,
     registerReducer,
     userValueReducer
-} from './Components/reducers/index.js';
+} from './reducers';
 
 const rootReducer = combineReducers({
 	createdValues: createValueReducer,
