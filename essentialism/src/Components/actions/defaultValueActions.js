@@ -10,7 +10,6 @@ export const fetchDefaultValues = () => dispatch => {
   return axiosAuth()
     .get(`${URL}/api/defaultvalues`)
     .then(res => {
-      console.log(res);
       dispatch({ type: DEFAULT_VALUES_SUCCESS, payload: res.data });
     })
     .catch(err => {

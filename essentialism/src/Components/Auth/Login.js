@@ -1,18 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
+import { Button } from "../Styles"
 
-import { login, fetchProjects, fetchDefaultValues, fetchUserValues } from "../actions";
+import { login, register, fetchProjects, fetchDefaultValues, fetchUserValues } from "../actions";
 
 class Login extends React.Component {
-  state = {
-    credentials: {
-      username: "",
-      password: ""
-    }
-  };
-
   
+     state = {
+        credentials: {
+          username: "",
+          password: ""
+      }
+    }
+
   handleChange = e => {
     this.setState({
       credentials: {
@@ -22,23 +23,29 @@ class Login extends React.Component {
     });
   };
 
-  login = e => {
+
+  loginAttempt = e => {
     e.preventDefault();
     this.props
       .login(this.state.credentials)
       .then(() => {
         this.props.history.push("/home");
-      })
-      .then(() => {
-        this.props.fetchProjects();
-        this.props.fetchDefaultValues();
-        this.props.fetchUserValues();
       });
   };
+
+  newUser = e => {
+    e.preventDefault();
+    this.props
+      .register(this.state.credentials)
+      .then(() => {
+        this.props.history.push("/login");
+      })
+  };
+
   render() {
     return (
       <div>
-        <form onSubmit={this.login}>
+        <form onSubmit={this.loginAttempt}>
           <input
             type="text"
             name="username"
@@ -55,14 +62,40 @@ class Login extends React.Component {
             autoComplete="current-password"
             placeholder="password"
           />
-          <button>
+          <Button>
             {" "}
             {this.props.loggingIn ? (
               <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
             ) : (
               "Log in"
             )}
-          </button>
+          </Button>
+        </form>
+        <form onSubmit={this.newUser}>
+          <input
+            type="text"
+            name="username"
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
+            autoComplete="username"
+            placeholder="username"
+          />
+          <input
+            type="password"
+            name="password"
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
+            autoComplete="current-password"
+            placeholder="password"
+          />
+          <Button>
+            {" "}
+            {this.props.registerUser ? (
+              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+            ) : (
+              "New User"
+            )}
+          </Button>
         </form>
       </div>
     );
@@ -71,12 +104,14 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    loggingIn: state.loggingIn,
-    error: state.error,
+    loggingIn: state.loginReducer.loggingIn,
+    registerUser: state.registerReducer.registerUser,
+    error: state.loginReducer.error,
+    user: state.loginReducer.user
   };
 };
 
 export default connect(
   mapStateToProps,
-  { login, fetchProjects, fetchDefaultValues, fetchUserValues }
+  { login, register, fetchProjects, fetchDefaultValues, fetchUserValues }
 )(Login);

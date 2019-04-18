@@ -9,12 +9,11 @@ export const URL = "https://essentialism.herokuapp.com";
 export const login = credentials => dispatch => {
   dispatch({ type: LOGIN_START });
   return axios
-    .post(`${URL}/api/auth/login `, credentials)
+    .post(`${URL}/api/auth/login`, credentials)
     .then(res => {
-      console.log(res);
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user_id",res.data.user.id)
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      console.log("asdlkjfaskjdvb;ajdbv;jkbabd",res.data)
     })
     .catch(err => {
       console.log(err.response);

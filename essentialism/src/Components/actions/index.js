@@ -6,6 +6,13 @@ export {
 } from './loginActions';
 
 export {
+    REGISTER_START, 
+    REGISTER_SUCCESS, 
+    REGISTER_FAILURE,
+    register
+} from './registerActions';
+
+export {
     FETCH_PROJECTS_START,
     FETCH_PROJECTS_SUCCESS,
     FETCH_PROJECTS_FAILURE,

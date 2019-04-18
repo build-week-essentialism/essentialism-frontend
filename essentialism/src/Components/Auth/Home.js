@@ -1,7 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { login, register, fetchProjects, fetchDefaultValues, fetchUserValues } from "../actions";
 
 class Home extends React.Component {
+    state = {
+        projects: []
+      };
+
+    
+    
+
     render() {
     return(
         <div>
@@ -19,5 +27,5 @@ const mapStateToProps = state => {
 }
 export default connect(
     mapStateToProps,
-    {}
+    { login, register, fetchProjects, fetchDefaultValues, fetchUserValues }
 )(Home);

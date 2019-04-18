@@ -17,7 +17,6 @@ export const defaultValueReducer = (state = initialState, action) => {
         gettingValues: true 
       };
     case actionTypes.DEFAULT_VALUES_SUCCESS:
-    console.log(action.payload)
       return { 
         ...state,
         defaultValues: action.payload,
