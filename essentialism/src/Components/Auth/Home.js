@@ -7,9 +7,6 @@ class Home extends React.Component {
         projects: []
       };
 
-    
-    
-
     render() {
     return(
         <div>
@@ -19,6 +16,7 @@ class Home extends React.Component {
         </div>
     )}
 }
+
 const mapStateToProps = state => {
     return {
        message: state.loginReducer.message,
