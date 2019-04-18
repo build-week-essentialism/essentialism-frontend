@@ -42,7 +42,7 @@ export class Header extends Component {
             return (
                 <HeaderComp>
                   <Link to={`/`}>
-                    <h2>lifeGPA</h2>
+                    <h2>Essentialism</h2>
                   </Link>
                   <Link to="/dashboard">
                     <p>Dashboard</p>
