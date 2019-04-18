@@ -12,15 +12,14 @@ const initialState = {
 export const projectReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_PROJECTS_START:
-      return { 
-          ...state, 
+      return {
+          ...state,
           gettingProjects: true
          };
     case actionTypes.FETCH_PROJECTS_SUCCESS:
-    console.log(action.payload)
-      return { 
-          ...state, 
-          projects: action.payload, 
+      return {
+          ...state,
+          projects: action.payload,
           gettingProjects: false
         };
     case actionTypes.FETCH_PROJECTS_FAILURE:

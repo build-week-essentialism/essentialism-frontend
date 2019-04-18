@@ -14,7 +14,6 @@ export const registerReducer = (state = initialState, action) => {
           registerUser: true
         };
       case actionTypes.REGISTER_SUCCESS:
-      console.log("register success", action.payload)
         return {
           ...state,
           error: "",

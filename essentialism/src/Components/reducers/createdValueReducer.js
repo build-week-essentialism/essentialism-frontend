@@ -12,18 +12,17 @@ const initialState = {
 export const createValueReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.USER_VALUES_START:
-      return { 
-        ...state, 
+      return {
+        ...state,
         updatingValues: true,
         creatingValue: true
       };
     case actionTypes.USER_VALUES_SUCCESS:
-    console.log(action.payload)
-      return { 
-        ...state, 
+      return {
+        ...state,
         createdValue: action.payload,
         creatingValue: false,
-        updatingValues: false 
+        updatingValues: false
       };
     case actionTypes.USER_VALUES_FAILURE:
       return {

@@ -33,10 +33,10 @@ class NewValues extends React.Component {
 
 const mapStateToProps = state => {
     return {
-      createdValue: state.createValueReducer.createValue,
+      createdValue: state.createdValues.createValue,
     };
   };
-  
+
   export default connect(
     mapStateToProps,
     { addValue }

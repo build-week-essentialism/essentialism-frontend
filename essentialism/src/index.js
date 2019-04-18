@@ -3,10 +3,31 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './Components/reducers';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+// import rootReducer from './Components/reducers';
+
+// middleware
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+
+// reducers
+import {
+	createValueReducer,
+	defaultValueReducer,
+	loginReducer,
+	projectReducer,
+    registerReducer,
+    userValueReducer
+} from './Components/reducers/index.js';
+
+const rootReducer = combineReducers({
+	createdValues: createValueReducer,
+	defaultValues: defaultValueReducer,
+	users: loginReducer,
+	projects: projectReducer,
+	register: registerReducer,
+	userValues: userValueReducer
+});
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 

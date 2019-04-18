@@ -12,16 +12,15 @@ const initialState = {
 export const userValueReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.USER_VALUES_START:
-      return { 
-        ...state, 
-        gettingValues: true 
+      return {
+        ...state,
+        gettingValues: true
       };
     case actionTypes.USER_VALUES_SUCCESS:
-    console.log(action.payload)
-      return { 
-        ...state, 
-        values: action.payload,
-        gettingValues: false 
+      return {
+        ...state,
+        uservalues: action.payload,
+        gettingValues: false
       };
     case actionTypes.USER_VALUES_FAILURE:
       return {

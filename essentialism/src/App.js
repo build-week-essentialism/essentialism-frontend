@@ -78,13 +78,13 @@ class App extends Component {
           <NavLink to="/my-values"><p>My Values</p></NavLink>
           <NavLink to="/new-project"><p>Update Project</p></NavLink>
           <NavLink to="/my-projects"><p>My Projects</p></NavLink>
-            
-          <Route path="/login" component={props => (<Login {...props}/>)} />
-          <PrivateRoute exact path="/home" component={props => (<Home {...props}/>)} />
-          <PrivateRoute exact path="/new-values" component={props => (<NewValues {...props}/>)}/> 
-          <PrivateRoute exact path="/my-values" component={props => (<Values {...props}/>)}/>
-          <PrivateRoute exact path="/new-project" component={props => (<NewProject {...props}/>)} />
-          <PrivateRoute exact path="/my-projects" component={props => (<Projects {...props}/>)}/>
+
+          <Route path="/login" render={props => (<Login {...props}/>)} />
+          <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/new-values" component={NewValues}/>
+          <PrivateRoute exact path="/my-values" component={Values}/>
+          <PrivateRoute exact path="/new-project" component={NewProject} />
+          <PrivateRoute exact path="/my-projects" component={Projects}/>
         </div>
       </Router>
     );
@@ -93,8 +93,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    projects: state.projectReducer.projects,
-    user: state.loginReducer.user
+    projects: state.projects.projects,
+    user: state.users.user
   };
 };
 
