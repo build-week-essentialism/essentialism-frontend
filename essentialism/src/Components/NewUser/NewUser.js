@@ -14,7 +14,7 @@ const NewUser = () => {
           After selecting your values, head on over to the projects page
           to get started aligning your values and with your actions.
         </p>
-        <Link to="/new-user/default-values">
+        <Link to="/new-user/select-values">
           <Button>Continue</Button>
         </Link>
       </div>

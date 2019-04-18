@@ -4,6 +4,8 @@ import Value from '../UserData/Value';
 import { connect } from "react-redux";
 import { fetchDefaultValues, fetchUserValues } from '../../actions/index.js';
 import { Button } from '../Styles';
+import { addValue } from '../../actions';
+import Loader from 'react-loader-spinner';
 
 class SelectValues extends React.Component {
   constructor(props){
@@ -43,7 +45,23 @@ componentDidUpdate(prevProps){
                 </div>
                 <div>
                     <h2>Or feel free to create your own personalized values</h2>
-                    <input/><Button>Custom Value</Button>
+                    <form onSubmit={addValue}>
+                    <input
+                        type="text"
+                        name="addValue"
+                        value={this.props.createdValue}
+                        onChange={this.handleChange}
+                        placeholder="add value"
+                    />
+                    <Button>
+                    {" "}
+                        {this.props.loggingIn ? (
+                        <Loader type="ThreeDots"  height="12" width="26" />
+                        ) : (
+                        "Add Value"
+                        )}
+                    </Button>
+                </form>
                 </div>
                 <div>
                     <h2>Once you have selected 3 core values continue on to the projects page</h2>

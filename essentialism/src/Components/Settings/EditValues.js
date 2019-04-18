@@ -26,8 +26,8 @@ class EditValues extends React.Component {
                         "Add Value"
                         )}
                     </Button>
-                    <Link to="/settings"><Button>Settings</Button></Link>
                 </form>
+                <Link to="/settings"><Button>Settings</Button></Link>
             </div>
         )
     }

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import DefaultValue from '../NewUser/DefaultValue';
 import { connect } from "react-redux";
 import { fetchDefaultValues, fetchUserValues } from '../../actions/index.js';
 import { Button } from '../Styles';
+import Loader from 'react-loader-spinner';
 
-class SelectProjects extends React.Component {
+class SelectProjects extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -43,7 +44,16 @@ componentDidUpdate(prevProps){
                 </div>
                 <div>
                     <h2>Or feel free to create your own personalized values</h2>
-                    <input/><Button>Custom Value</Button>
+                    <form onSubmit={this.newProject}>
+                    <input 
+                    type="text"
+                    name="project"
+                    value={this.state.project}
+                    onChange={this.handleChange}
+                    placeholder="New Project"
+                    />
+                    <Button>Add Project</Button>
+                </form>
                 </div>
                 <div>
                     <h2>Once you have selected 3 core values continue on to the projects page</h2>

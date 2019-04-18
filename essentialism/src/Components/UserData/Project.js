@@ -1,12 +1,13 @@
 import React from 'react';
-import {Button, ProjectCard} from '../Styles';
+import {CircleBtn, ProjectCard} from '../Styles';
 
 const Project = props => {
-    
+
+
     return(
         <ProjectCard>
             <h4>{props.project.project_name}</h4>
-            <Button>Edit</Button>
+            <CircleBtn>X</CircleBtn><CircleBtn>O</CircleBtn>
         </ProjectCard>
     )
     
