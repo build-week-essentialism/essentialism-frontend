@@ -1,11 +1,13 @@
 import React from 'react';
+import {Button, ProjectCard} from '../Styles';
 
 const Project = props => {
     
     return(
-        <div>
+        <ProjectCard>
             <h4>{props.project.project_name}</h4>
-        </div>
+            <Button>Edit</Button>
+        </ProjectCard>
     )
     
 }

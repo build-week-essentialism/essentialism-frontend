@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import PrivateRoute from "./Components/Auth/PrivateRoute";
+import { connect } from "react-redux";
+
 import DashBoard from "./Components/Auth/DashBoard";
 
 import Header from "./Components/Header/Header";
@@ -14,7 +16,9 @@ import Values from './Components/Values/Values';
 import NewProject from './Components/Projects/NewProject';
 import Projects from './Components/Projects/Projects';
 
-import { connect } from "react-redux";
+import NewUser from "./Components/NewUser/NewUser";
+import SelectValues from "./Components/NewUser/SelectValues";
+
 
 const Home = props => {
   return(
@@ -45,10 +49,12 @@ class App extends Component {
           
             <Route exact path="/" component={Home} />
             <PrivateRoute exact path="/dashboard" component={DashBoard} />
-            <PrivateRoute exact path="/add-values" component={NewValues}/>
-            <PrivateRoute exact path="/values" component={Values}/>
-            <PrivateRoute exact path="/project" component={NewProject} />
-            <PrivateRoute exact path="/projects" component={Projects}/>
+            <Route exact path="/new-user" component={NewUser} />
+            <Route exact path="/new-use/select-values" component={SelectValues} />
+            <Route exact path="/add-values" component={NewValues}/>
+            <Route exact path="/values" component={Values}/>
+            <Route exact path="/new-project" component={NewProject} />
+            <Route exact path="/projects" component={Projects}/>
           </div>
 
         </div>

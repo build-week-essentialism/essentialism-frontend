@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { register } from "../../actions";
+import { register, login } from "../../actions";
 import {Button} from '../Styles/';
 import Loader from 'react-loader-spinner';
 import { connect } from "react-redux";
@@ -27,7 +27,9 @@ newUser = e => {
     this.props
         .register(this.state.credentials)
         .then(() => {
-        this.props.history.push("/login");
+          this.props.login(this.state.credentials);})
+        .then(() => {
+          this.props.history.push("/new-user");
         })
     };
 
@@ -75,5 +77,5 @@ const mapStateToProps = state => {
   
   export default connect(
     mapStateToProps,
-    { register }
+    { register, login }
   )(Register);

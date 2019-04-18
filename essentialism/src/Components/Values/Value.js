@@ -1,10 +1,14 @@
 import React from 'react';
+import { Button, ValueCard } from '../Styles';
 
 const Value = props => {
+    console.log("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", props.value.created_value_name)
     return(
-        <div>
-            {(props.value.default_value_name !== 'null') ? <h4>{props.value.default_value_name}</h4> : <h4>{props.value.created_value_name}</h4>}
-        </div>
+        <ValueCard>
+            {(props.value.default_value_name !== 'null') ? <h4>{props.value.default_value_name}</h4> : <h4>{props.value.created_value_name}</h4>} 
+            <Button>Edit</Button>
+        </ValueCard>
+        
     )
 }
 

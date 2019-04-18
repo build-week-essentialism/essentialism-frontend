@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {HeaderComp} from '../Styles';
 
 export class Header extends Component {
     state = {
@@ -25,7 +26,7 @@ export class Header extends Component {
         const user_id = localStorage.getItem("user_id");
         if (!user_id) {
             return (
-                <div>
+                <HeaderComp>
                   <Link to={`/`}>
                     <h2>Essentialism</h2>
                   </Link>
@@ -35,11 +36,11 @@ export class Header extends Component {
                   <Link to={`/login`}>
                     <p>Login</p>
                   </Link>
-                </div>
+                </HeaderComp>
             );
           } else if (user_id) {
             return (
-                <div>
+                <HeaderComp>
                   <Link to={`/`}>
                     <h2>lifeGPA</h2>
                   </Link>
@@ -49,7 +50,7 @@ export class Header extends Component {
                   <Link to={`/login`}>
                     <p onClick={this.Logout}>Logout</p>
                   </Link>
-                </div>
+                </HeaderComp>
             );
           }
         }

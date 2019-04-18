@@ -1,6 +1,6 @@
 import React from 'react';
 import Value from './Value';
-import NewValues from './NewValues';
+
 import { connect } from "react-redux";
 import { fetchDefaultValues, fetchUserValues } from '../../actions/index.js';
 
@@ -19,8 +19,6 @@ componentDidMount(){
         this.props.fetchUserValues(user_id)
         this.props.fetchDefaultValues()
         this.setState({uservalues: this.props.uservalues, defaultValues: this.props.defaultValues})
-    } else {
-        this.props.fetchDefaultValues()
     }
 }
 
@@ -31,31 +29,25 @@ componentDidUpdate(prevProps){
 }
 
     render(){
-        if (localStorage.getItem("token") && localStorage.getItem("user_id")){
+        if (!localStorage.getItem("token") && !localStorage.getItem("user_id")){
         return(
             <div>
-                {/* <NewValues/>
-                <h2>Default Values</h2>
-                {this.state.defaultValues.map((value,id) =>{
-                   return <Value value={value} key={id}/>
-                })} */}
-                <h2>My Values</h2>
-                {this.state.uservalues.map((value,id) =>{
-                   return <Value value={value} key={id}/>
-                })}
+                <p>Please log in...</p>
             </div>
         )
         } else {
             return (
             <div>
-                <p>Please log in...</p>
+                <h2>My Values</h2>
+                {this.state.uservalues.map((value,id) =>{
+                   return <Value value={value} key={id}/>
+                })}
             </div>
             )
         }
     }
 }
 const mapStatetoProps = state => {
-    console.log('mapStateToProps', state)
     return {
       uservalues: state.userValues.uservalues,
       defaultValues: state.defaultValues.defaultValues
