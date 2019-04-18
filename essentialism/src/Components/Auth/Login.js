@@ -1,55 +1,117 @@
-import React, { Component } from 'react';
-import { Button, Form, FormGroup, Input } from '../Styles';
+import React from "react";
+import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
+import { Button } from "../Styles"
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
+import { login, register, fetchProjects, fetchDefaultValues, fetchUserValues } from "../actions";
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+class Login extends React.Component {
+  
+     state = {
+        credentials: {
+          username: "",
+          password: ""
+      }
+    }
+
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
   };
 
-  handleLoginSubmit = e => {
-    const user = this.state.username;
-    localStorage.setItem('user', user);
-    window.location.reload();
+
+  loginAttempt = e => {
+    e.preventDefault();
+    this.props
+      .login(this.state.credentials)
+      .then(() => {
+        this.props.history.push("/home");
+      });
+  };
+
+  newUser = e => {
+    e.preventDefault();
+    this.props
+      .register(this.state.credentials)
+      .then(() => {
+        this.props.history.push("/login");
+      })
   };
 
   render() {
     return (
-      <Form className="login-form">
-        <h3>Welcome to the Essentialism App</h3>
-        <div>Please Login</div>
-        <FormGroup>
-          <Input
+      <div>
+        <form onSubmit={this.loginAttempt}>
+          <input
             type="text"
-            placeholder="User Name"
             name="username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
+            autoComplete="username"
+            placeholder="username"
           />
-        </FormGroup>
-        <FormGroup>
-          <Input
+          <input
             type="password"
-            placeholder="Password"
             name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
+            autoComplete="current-password"
+            placeholder="password"
           />
-          <br />
-          <Button color="success" size="large" onClick={this.handleLoginSubmit}>
-            Log In
+          <Button>
+            {" "}
+            {this.props.loggingIn ? (
+              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+            ) : (
+              "Log in"
+            )}
           </Button>
-        </FormGroup>
-      </Form>
+        </form>
+        <form onSubmit={this.newUser}>
+          <input
+            type="text"
+            name="username"
+            value={this.state.credentials.username}
+            onChange={this.handleChange}
+            autoComplete="username"
+            placeholder="username"
+          />
+          <input
+            type="password"
+            name="password"
+            value={this.state.credentials.password}
+            onChange={this.handleChange}
+            autoComplete="current-password"
+            placeholder="password"
+          />
+          <Button>
+            {" "}
+            {this.props.registerUser ? (
+              <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+            ) : (
+              "New User"
+            )}
+          </Button>
+        </form>
+      </div>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    loggingIn: state.loginReducer.loggingIn,
+    registerUser: state.registerReducer.registerUser,
+    error: state.loginReducer.error,
+    user: state.loginReducer.user
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { login, register, fetchProjects, fetchDefaultValues, fetchUserValues }
+)(Login);

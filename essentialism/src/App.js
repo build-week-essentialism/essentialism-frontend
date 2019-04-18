@@ -1,18 +1,104 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
-import DashBoard from './Components/Dashboard/DashBoard';
-import Login from './Components/Auth/Login';
-import authenticate from './Components/Auth/authenticate';
+import React, { Component } from "react";
+
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+
+import Login from "./Components/Auth/Login";
+import PrivateRoute from "./Components/Auth/PrivateRoute";
+import Home from "./Components/Auth/Home";
+import NewValues from './Components/Values/NewValues';
+import Values from './Components/Values/Values';
+import NewProject from './Components/Projects/NewProject';
+import Projects from './Components/Projects/Projects';
+
+import { connect } from "react-redux";
 
 class App extends Component {
+  state = {
+    projects: '',
+    values: '',
+    user: ''
+  }
+
+  componentDidMount() {
+    this.hydrateStateWithLocalStorage();
+    window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
+    this.saveStateToLocalStorage();
+  }
+
+  hydrateStateWithLocalStorage() {
+    for (let key in this.state) {
+      if (localStorage.hasOwnProperty(key)) {
+        let value = localStorage.getItem(key);
+        try {
+          value = JSON.parse(value);
+          this.setState({ [key]: value });
+        } catch (e) {
+          this.setState({ [key]: value });
+        }
+      }
+    }
+  }
+
+  saveStateToLocalStorage() {
+    for (let key in this.state) {
+      localStorage.setItem(key, JSON.stringify(this.state[key]));
+    }
+  }
+
+  updateInput(key, value) {
+    this.setState({ [key]: value });
+  }
+
+
+  handleChange = e => {
+    this.setState({
+      projects: { ...this.state.projects},
+      values: { ...this.state.values},
+      user: { ...this.state.user},
+    });
+  };
+
   render() {
     return (
       <Router>
-        <ConditionalView/>
+        <div className="App">
+          <NavLink to="/login">Login</NavLink>
+          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/new-values"><p>Update Values</p></NavLink>
+          <NavLink to="/my-values"><p>My Values</p></NavLink>
+          <NavLink to="/new-project"><p>Update Project</p></NavLink>
+          <NavLink to="/my-projects"><p>My Projects</p></NavLink>
+            
+          <Route path="/login" component={props => (<Login {...props}/>)} />
+          <PrivateRoute exact path="/home" component={props => (<Home {...props}/>)} />
+          <PrivateRoute exact path="/new-values" component={props => (<NewValues {...props}/>)}/> 
+          <PrivateRoute exact path="/my-values" component={props => (<Values {...props}/>)}/>
+          <PrivateRoute exact path="/new-project" component={props => (<NewProject {...props}/>)} />
+          <PrivateRoute exact path="/my-projects" component={props => (<Projects {...props}/>)}/>
+        </div>
       </Router>
     );
   }
 }
-const ConditionalView = authenticate(DashBoard)(Login);
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    projects: state.projectReducer.projects,
+    user: state.loginReducer.user
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(App);

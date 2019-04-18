@@ -4,7 +4,7 @@ const Project = props => {
     
     return(
         <div>
-            <h2>Project</h2>
+            <h4>{props.project.project_name}</h4>
         </div>
     )
     
