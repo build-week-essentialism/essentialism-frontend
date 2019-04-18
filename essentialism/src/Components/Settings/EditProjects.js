@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Button } from '../Styles'
 
 class NewProject extends React.Component {
@@ -26,6 +27,7 @@ class NewProject extends React.Component {
                     />
                     <Button>Add Project</Button>
                 </form>
+                <Link to="/settings"><Button>Settings</Button></Link>
             </div>
         )
     }

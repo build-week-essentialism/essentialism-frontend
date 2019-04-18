@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import Value from '../UserData/Value';
+import DefaultValue from '../NewUser/DefaultValue';
 import { connect } from "react-redux";
 import { fetchDefaultValues, fetchUserValues } from '../../actions/index.js';
 import { Button } from '../Styles';
 
-class SelectValues extends React.Component {
+class SelectProjects extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -38,7 +38,7 @@ componentDidUpdate(prevProps){
                 <div>
                     <h2>Feel free to use our default values list to get started</h2>
                     {this.state.defaultvalues.map((value,id) =>{
-                    return <Value value={value} key={id}/>
+                    return <DefaultValue value={value} key={id}/>
                     })}
                 </div>
                 <div>
@@ -66,4 +66,4 @@ const mapStatetoProps = state => {
   export default connect(
     mapStatetoProps,
     { fetchDefaultValues, fetchUserValues }
-  )(SelectValues)
+  )(SelectProjects)

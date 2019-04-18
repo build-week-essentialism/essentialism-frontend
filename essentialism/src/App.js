@@ -6,18 +6,21 @@ import Register from "./Components/Auth/Register";
 import PrivateRoute from "./Components/Auth/PrivateRoute";
 import { connect } from "react-redux";
 
-import DashBoard from "./Components/Auth/DashBoard";
+import DashBoard from "./Components/DashBoard";
 
 import Header from "./Components/Header/Header";
 
-import NewValues from './Components/Values/NewValues';
-import Values from './Components/Values/Values';
+import Projects from './Components/UserData/Projects';
+import Values from './Components/UserData/Values';
 
-import NewProject from './Components/Projects/NewProject';
-import Projects from './Components/Projects/Projects';
+import Settings from './Components/Settings/Settings';
+import EditValues from './Components/Settings/EditValues';
+import EditProjects from './Components/Settings/EditProjects';
 
 import NewUser from "./Components/NewUser/NewUser";
 import SelectValues from "./Components/NewUser/SelectValues";
+import SelectProjects from "./Components/NewUser/SelectProjects";
+
 
 
 const Home = props => {
@@ -51,10 +54,13 @@ class App extends Component {
             <PrivateRoute exact path="/dashboard" component={DashBoard} />
             <Route exact path="/new-user" component={NewUser} />
             <Route exact path="/new-use/select-values" component={SelectValues} />
-            <Route exact path="/add-values" component={NewValues}/>
+            <Route exact path="/new-user/select-projects" component={SelectProjects}/>
+
             <Route exact path="/values" component={Values}/>
-            <Route exact path="/new-project" component={NewProject} />
             <Route exact path="/projects" component={Projects}/>
+            <Route exact path="/settings" component={Settings} />
+            <Route exact path="/new-user/edit-values" component={EditValues}/>
+            <Route exact path="/new-user/edit-projectss" component={EditProjects}/>
           </div>
 
         </div>

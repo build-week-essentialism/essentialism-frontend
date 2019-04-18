@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Button} from '../Styles';
+import {Button} from './Styles';
 import {connect} from 'react-redux';
-import {} from "../../actions";
+import {} from "../actions";
 
 class DashBoard extends React.Component {
     state = {
@@ -22,10 +22,10 @@ class DashBoard extends React.Component {
                 <div>
                     <h1>DashBoard</h1>
                     <p>{this.props.message}</p>
-                    <p>{this.props.user.username}</p>
                     <div>
                         <Link to={'/projects'}><Button>My Projects</Button></Link>
                         <Link to={'/values'}><Button>My Values</Button></Link>
+                        <Link to={'/settings'}><Button>Settings</Button></Link>
                     </div>
                 </div>
             )

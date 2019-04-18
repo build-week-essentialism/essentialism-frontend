@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { Button } from '../Styles';
 import Loader from 'react-loader-spinner';
 import { connect } from "react-redux";
 import { addValue } from "../../actions";
 
-class NewValues extends React.Component {
+class EditValues extends React.Component {
     render(){
         return(
             <div>
-                <h2>New Values</h2>
+                <h2>Edit Values</h2>
                 <form onSubmit={addValue}>
                     <input
                         type="text"
@@ -20,11 +21,12 @@ class NewValues extends React.Component {
                     <Button>
                     {" "}
                         {this.props.loggingIn ? (
-                        <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
+                        <Loader type="ThreeDots"  height="12" width="26" />
                         ) : (
                         "Add Value"
                         )}
                     </Button>
+                    <Link to="/settings"><Button>Settings</Button></Link>
                 </form>
             </div>
         )
@@ -40,4 +42,4 @@ const mapStateToProps = state => {
   export default connect(
     mapStateToProps,
     { addValue }
-  )(NewValues);
+  )(EditValues);
