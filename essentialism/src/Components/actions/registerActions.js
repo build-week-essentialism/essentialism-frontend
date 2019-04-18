@@ -11,11 +11,9 @@ export const register = credentials => dispatch => {
   return axios
     .post(`${URL}/api/auth/register`, credentials)
     .then(res => {
-      console.log(res);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response);
       dispatch({ type: REGISTER_FAILURE, payload: err });
     });
 };

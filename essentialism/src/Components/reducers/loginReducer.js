@@ -4,7 +4,7 @@ const initialState = {
     loggingIn: false,
     error: "",
     message: "",
-    user:[]
+    user:{}
 }
 
 export const loginReducer = (state = initialState, action) => {

@@ -10,11 +10,9 @@ export const addValue = created_value_name => dispatch => {
   return axios
     .post(`${URL}/api/auth/createdvalues`, created_value_name)
     .then(res => {
-      console.log(res);
       dispatch({ type: ADD_VALUE_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response);
       dispatch({ type: ADD_VALUE_FAILURE, payload: err });
     });
 };

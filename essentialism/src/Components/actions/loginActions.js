@@ -12,11 +12,10 @@ export const login = credentials => dispatch => {
     .post(`${URL}/api/auth/login`, credentials)
     .then(res => {
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user_id", res.data.user.id);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-      console.log("asdlkjfaskjdvb;ajdbv;jkbabd",res.data)
     })
     .catch(err => {
-      console.log(err.response);
       dispatch({ type: LOGIN_FAILURE, payload: err });
     });
 };

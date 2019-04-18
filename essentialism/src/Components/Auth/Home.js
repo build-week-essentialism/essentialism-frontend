@@ -19,8 +19,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
     return {
-       message: state.loginReducer.message,
-       user: state.loginReducer.user
+        message: state.users.message,
+        user: state.users.user
     }
 }
 export default connect(

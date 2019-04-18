@@ -104,10 +104,10 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    loggingIn: state.loginReducer.loggingIn,
-    registerUser: state.registerReducer.registerUser,
-    error: state.loginReducer.error,
-    user: state.loginReducer.user
+    loggingIn: state.users.loggingIn,
+    registerUser: state.register.registerUser,
+    error: state.users.error,
+    user: state.users.user
   };
 };
 

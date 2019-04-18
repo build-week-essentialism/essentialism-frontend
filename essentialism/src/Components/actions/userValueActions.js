@@ -7,11 +7,9 @@ export const USER_VALUES_FAILURE = "USER_VALUES_FAILURE";
 
 export const fetchUserValues = (user_id) => dispatch => {
   dispatch({ type: USER_VALUES_START });
-  console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user_id)
   return axiosAuth()
     .get(`${URL}/api/uservalues/${user_id}`)
     .then(res => {
-      console.log("user value", res);
       dispatch({ type: USER_VALUES_SUCCESS, payload: res.data });
     })
     .catch(err => {

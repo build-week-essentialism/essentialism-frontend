@@ -1,13 +1,13 @@
 export {
-    LOGIN_START, 
-    LOGIN_SUCCESS, 
+    LOGIN_START,
+    LOGIN_SUCCESS,
     LOGIN_FAILURE,
     login
 } from './loginActions';
 
 export {
-    REGISTER_START, 
-    REGISTER_SUCCESS, 
+    REGISTER_START,
+    REGISTER_SUCCESS,
     REGISTER_FAILURE,
     register
 } from './registerActions';

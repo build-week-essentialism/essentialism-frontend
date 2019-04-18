@@ -10,7 +10,6 @@ export const fetchProjects = (user_id) => dispatch => {
   return axiosAuth()
     .get(`${URL}/api/projects/${user_id}`)
     .then(res => {
-      console.log('projects action', res);
       dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data });
     })
     .catch(err => {
