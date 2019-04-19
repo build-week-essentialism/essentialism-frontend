@@ -1,13 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
+import { register, login } from "../../actions";
+import {Button} from '../Styles/';
+import Loader from 'react-loader-spinner';
 import { connect } from "react-redux";
-import Loader from "react-loader-spinner";
-import { Button } from "../Styles"
 
-import { login, fetchProjects, fetchDefaultValues, fetchUserValues } from "../../actions";
 
-class Login extends React.Component {
-  
-     state = {
+export class Register extends Component {
+    state = {
         credentials: {
           username: "",
           password: ""
@@ -23,21 +22,21 @@ class Login extends React.Component {
     });
   };
 
-
-  loginAttempt = e => {
+newUser = e => {
     e.preventDefault();
     this.props
-      .login(this.state.credentials)
-      .then(() => {
-        this.props.history.push("/dashboard");
-      });
-  };
-
+        .register(this.state.credentials)
+        .then(() => {
+          this.props.login(this.state.credentials);})
+        .then(() => {
+          this.props.history.push("/new-user");
+        })
+    };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.loginAttempt}>
+        <form onSubmit={this.newUser}>
           <input
             type="text"
             name="username"
@@ -56,13 +55,12 @@ class Login extends React.Component {
           />
           <Button>
             {" "}
-            {this.props.loggingIn ? (
+            {this.props.registerUser ? (
               <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />
             ) : (
-              "Log in"
+              "New User"
             )}
           </Button>
-
         </form>
       </div>
     );
@@ -70,14 +68,14 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    loggingIn: state.users.loggingIn,
-    error: state.users.error,
-    user: state.users.user
+    return {
+      registerUser: state.register.registerUser,
+      error: state.users.error,
+      user: state.users.user
+    };
   };
-};
-
-export default connect(
-  mapStateToProps,
-  { login, fetchProjects, fetchDefaultValues, fetchUserValues }
-)(Login);
+  
+  export default connect(
+    mapStateToProps,
+    { register, login }
+  )(Register);
